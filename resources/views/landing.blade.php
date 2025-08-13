@@ -1,9 +1,10 @@
+{{-- resources/views/landing.blade.php --}}
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keripik Nusantara - UMKM Keripik Terbaik</title>
+    <title>Kripik Pisang Maknyuss</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -98,13 +99,13 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(160, 82, 45, 0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23deb887" width="1200" height="600"/><circle cx="200" cy="150" r="80" fill="%23cd853f" opacity="0.3"/><circle cx="800" cy="400" r="100" fill="%23d2b48c" opacity="0.4"/><circle cx="1000" cy="200" r="60" fill="%23f4a460" opacity="0.3"/></svg>');
+            background-image: url('{{ asset('assets/bg.png') }}');
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
+            color: #8b4513;
             background-size: cover;
             background-position: center;
         }
@@ -567,258 +568,177 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
+
+    {{-- Header --}}
     <header class="header">
         <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-seedling"></i>
-                Keripik Nusantara
-            </div>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="#home">Beranda</a></li>
-                    <li><a href="#products">Produk</a></li>
-                    <li><a href="#about">Tentang</a></li>
-                    <li><a href="#contact">Kontak</a></li>
-                </ul>
-            </nav>
-            <div class="cart-icon" onclick="toggleCart()">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count" id="cartCount">0</span>
-            </div>
+            <div class="logo"><i class="fas fa-leaf"></i> Kripik Pisang Maknyuss</div>
+            <ul class="nav-menu">
+                <li><a href="#original">Produk Original</a></li>
+                <li><a href="#proses">Proses Produksi</a></li>
+                <li><a href="#lainnya">Camilan Lain</a></li>
+            </ul>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
+    {{-- Hero --}}
+    <section class="hero">
         <div class="hero-content">
-            <h1>Keripik Nusantara</h1>
-            <p>Cita Rasa Tradisional, Kualitas Premium</p>
-            <a href="#products" class="cta-button">
-                <i class="fas fa-arrow-down"></i> Lihat Produk
-            </a>
+            <h1>Lezatnya Kripik Pisang Maknyuss</h1>
+            <p>Nikmati sensasi kriuk dan rasa yang menggoda, langsung dari UMKM lokal terbaik.</p>
+            <a href="#original" class="cta-button">Lihat Produk</a>
         </div>
     </section>
 
-    <!-- Main Content -->
     <main class="main-content">
-        <!-- Featured Section -->
-        <section class="featured">
-            <div class="featured-content">
-                <div class="featured-text">
-                    <h2>Sejarah</h2>
-                    <p>Keripik Nusantara telah menjadi bagian dari tradisi kuliner Indonesia selama bertahun-tahun. Kami menghadirkan cita rasa autentik dengan menggunakan bahan-bahan pilihan terbaik dan proses pengolahan yang higienis.</p>
-                    <p>Setiap gigitan keripik kami menghadirkan kelezatan yang tak terlupakan, mulai dari keripik pisang dengan berbagai varian rasa hingga keripik talas yang gurih dan renyah.</p>
-                </div>
-                <div class="featured-image">
-                    <div style="width: 100%; height: 300px; background: linear-gradient(45deg, #deb887, #d2b48c); display: flex; align-items: center; justify-content: center; border-radius: 15px;">
-                        <i class="fas fa-leaf" style="font-size: 5rem; color: #8b4513; opacity: 0.7;"></i>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="container">
 
-        <!-- Products Section -->
-        <section id="products" class="products-section">
-            <div class="container">
+            <!-- Tentang Kami -->
+            <section id="sejarah" style="padding: 50px 0; background-color: #A0522D; border-radius: 20px; box-shadow: 0 6px 15px rgba(0,0,0,0.15); display: flex; flex-direction: column; justify-content: center;">
+                <div style="max-width: 1100px; margin: auto; display: flex; gap: 40px; align-items: stretch; flex-wrap: wrap;">
+
+                    <!-- Kotak teks -->
+                    <div style="flex: 1; min-width: 320px; background-color: #A0522D; color: white; padding: 40px; display: flex; flex-direction: column; justify-content: center;">
+                        <h2 style="color: #FFD700; font-size: 28px; font-weight: bold; margin-bottom: 20px;">Sejarah</h2>
+                        <p style="line-height: 1.6; margin-bottom: 15px;">
+                            Keripik Nusantara telah menjadi bagian dari tradisi kuliner Indonesia selama bertahun-tahun.
+                            Kami menghadirkan cita rasa autentik dengan menggunakan bahan-bahan pilihan terbaik dan proses pengolahan yang higienis.
+                        </p>
+                        <p style="line-height: 1.6;">
+                            Setiap gigitan keripik kami menghadirkan kelezatan yang tak terlupakan, mulai dari keripik pisang
+                            dengan berbagai varian rasa hingga keripik talas yang gurih dan renyah.
+                        </p>
+                    </div>
+
+                    <!-- Kotak gambar -->
+                    <div style="flex: 1; min-width: 320px; background-color: #D2A679; border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 15px rgba(0,0,0,0.15);">
+                        <img src="https://img.icons8.com/ios-filled/100/8b4513/leaf.png" alt="Ikon Daun" style="width: 80px; height: auto;">
+                    </div>
+
+                </div>
+            </section>
+
+
+            {{-- Produk Original --}}
+            <section id="original" class="products-section">
                 <div class="section-title">
-                    <h2>Produk</h2>
-                    <p>Nikmati berbagai pilihan keripik berkualitas premium</p>
+                    <h2>Produk Original</h2>
+                    <p>Kami sajikan kripik pisang dengan rasa autentik pilihan</p>
                 </div>
-                
+
                 <div class="products-grid">
-                    <!-- Keripik Pisang Manis -->
-                    <div class="product-card">
-                        <div class="product-image">
-                            <i class="fas fa-cookie"></i>
-                        </div>
-                        <div class="product-info">
-                            <h3>Keripik Pisang Manis</h3>
-                            <p>Keripik pisang dengan rasa manis yang lezat, dibuat dari pisang raja pilihan</p>
-                            <div class="product-variants">
-                                <span class="variant-tag">Manis</span>
-                                <span class="variant-tag">Renyah</span>
-                            </div>
-                            <div class="product-price">Rp 15.000</div>
-                            <button class="add-to-cart" onclick="addToCart('Keripik Pisang Manis', 15000)">
-                                <i class="fas fa-shopping-cart"></i>
-                                Tambah ke Keranjang
-                            </button>
-                        </div>
-                        <div class="best-seller">Terlaris</div>
-                    </div>
+                    @php
+                        $produkOriginal = [
+                            ['nama' => 'Kripik Pisang Manis','harga' => '60.000/kg', 'deskripsi' => 'Manis alami dari pisang pilihan.', 'gambar' => 'kripik-manis.jpg'],
+                            ['nama' => 'Kripik Pisang Asin', 'harga' => '60.000/kg', 'deskripsi' => 'Gurih asin yang bikin nagih.', 'gambar' => 'kripik-asin.jpg'],
+                            ['nama' => 'Kripik Pisang Cokelat', 'harga' => '60.000/kg', 'deskripsi' => 'Kripik pisang dibalut coklat.', 'gambar' => 'kripik-cokelat.jpg'],
+                            ['nama' => 'Kripik Pisang Balado', 'harga' => '60.000/kg', 'deskripsi' => 'Bumbu baladonya bikin beda.', 'gambar' => 'kripik-balado.jpg'],
+                            ['nama' => 'Kripik Talas', 'harga' => '60.000/kg', 'deskripsi' => 'Renyaaan talas pilihan.', 'gambar' => 'kripik-talas.jpg'],
+                            ['nama' => 'Kripik Sukun', 'harga' => '60.000/kg', 'deskripsi' => 'Nikmatnya sukun yang garing.', 'gambar' => 'kripik-sukun.jpg'],
+                        ];
+                    @endphp
 
-                    <!-- Keripik Pisang Asin -->
+                    @foreach ($produkOriginal as $produk)
                     <div class="product-card">
                         <div class="product-image">
-                            <i class="fas fa-cookie-bite"></i>
+                            <img src="{{ asset('images/'.$produk['gambar']) }}" alt="{{ $produk['nama'] }}" style="width:100%; height:100%; object-fit:cover;">
                         </div>
                         <div class="product-info">
-                            <h3>Keripik Pisang Asin</h3>
-                            <p>Keripik pisang asin yang gurih dan renyah, cocok untuk camilan sehat</p>
-                            <div class="product-variants">
-                                <span class="variant-tag">Asin</span>
-                                <span class="variant-tag">Gurih</span>
-                            </div>
-                            <div class="product-price">Rp 15.000</div>
-                            <button class="add-to-cart" onclick="addToCart('Keripik Pisang Asin', 15000)">
-                                <i class="fas fa-shopping-cart"></i>
-                                Tambah ke Keranjang
-                            </button>
+                            <h3>{{ $produk['nama'] }}</h3>
+                            <p>{{ $produk['deskripsi'] }}</p>
+                            <a href="https://wa.me/6283107772136?text=Halo%20saya%20mau%20pesan%20{{ urlencode($produk['nama']) }}" target="_blank" class="add-to-cart">
+                                <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                            </a>
                         </div>
                     </div>
+                    @endforeach
+                </div>
+            </section>
 
-                    <!-- Keripik Pisang Coklat -->
-                    <div class="product-card">
-                        <div class="product-image">
-                            <i class="fas fa-candy-cane"></i>
-                        </div>
-                        <div class="product-info">
-                            <h3>Keripik Pisang Coklat</h3>
-                            <p>Keripik pisang dengan lapisan coklat premium yang menggugah selera</p>
-                            <div class="product-variants">
-                                <span class="variant-tag">Coklat</span>
-                                <span class="variant-tag">Premium</span>
-                            </div>
-                            <div class="product-price">Rp 18.000</div>
-                            <button class="add-to-cart" onclick="addToCart('Keripik Pisang Coklat', 18000)">
-                                <i class="fas fa-shopping-cart"></i>
-                                Tambah ke Keranjang
-                            </button>
-                        </div>
-                    </div>
+            <!-- Proses Produksi -->
+            <section id="proses" style="padding: 40px 0;">
+                <h2 style="text-align: center;">Proses Produksi Kami</h2>
+                <div style="
+                    display: flex;
+                    gap: 0;
+                    border: 8px solid #e2c78f; /* warna frame */
+                    box-shadow: 4px 4px 8px rgba(0,0,0,0.2);
+                    margin-top: 20px;
+                ">
+                    <img src="{{ asset('assets/mentah.jpg') }}" style="width: 20%; height: auto;">
+                    <img src="{{ asset('assets/goreng.jpg') }}" style="width: 20%; height: auto;">
+                    <img src="{{ asset('assets/mateng.jpg') }}" style="width: 20%; height: auto;">
+                    <img src="{{ asset('assets/mateng.jpg') }}" style="width: 20%; height: auto;">
+                    <img src="{{ asset('assets/mateng.jpg') }}" style="width: 20%; height: auto;">
+                </div>
+            </section>
 
-                    <!-- Keripik Talas -->
-                    <div class="product-card">
-                        <div class="product-image">
-                            <i class="fas fa-carrot"></i>
-                        </div>
-                        <div class="product-info">
-                            <h3>Keripik Talas</h3>
-                            <p>Keripik talas segar dengan cita rasa unik dan tekstur yang renyah</p>
-                            <div class="product-variants">
-                                <span class="variant-tag">Talas</span>
-                                <span class="variant-tag">Sehat</span>
-                            </div>
-                            <div class="product-price">Rp 16.000</div>
-                            <button class="add-to-cart" onclick="addToCart('Keripik Talas', 16000)">
-                                <i class="fas fa-shopping-cart"></i>
-                                Tambah ke Keranjang
-                            </button>
-                        </div>
-                    </div>
 
-                    <!-- Keripik Singkong -->
-                    <div class="product-card">
-                        <div class="product-image">
-                            <i class="fas fa-seedling"></i>
-                        </div>
-                        <div class="product-info">
-                            <h3>Keripik Singkong</h3>
-                            <p>Keripik singkong tradisional dengan bumbu rahasia yang menggoda</p>
-                            <div class="product-variants">
-                                <span class="variant-tag">Tradisional</span>
-                                <span class="variant-tag">Pedas</span>
-                            </div>
-                            <div class="product-price">Rp 14.000</div>
-                            <button class="add-to-cart" onclick="addToCart('Keripik Singkong', 14000)">
-                                <i class="fas fa-shopping-cart"></i>
-                                Tambah ke Keranjang
-                            </button>
-                        </div>
-                    </div>
+            {{-- Produk Camilan Lain --}}
+            <section id="lainnya" class="products-section">
+                <div class="section-title">
+                    <h2>Camilan Lain</h2>
+                    <p>Varian camilan gurih dan renyah lainnya</p>
+                </div>
 
-                    <!-- Keripik Ubi -->
-                    <div class="product-card">
-                        <div class="product-image">
-                            <i class="fas fa-apple-alt"></i>
-                        </div>
-                        <div class="product-info">
-                            <h3>Keripik Ubi Ungu</h3>
-                            <p>Keripik ubi ungu yang kaya antioksidan dan memiliki warna menarik</p>
-                            <div class="product-variants">
-                                <span class="variant-tag">Ubi Ungu</span>
-                                <span class="variant-tag">Antioksidan</span>
-                            </div>
-                            <div class="product-price">Rp 17.000</div>
-                            <button class="add-to-cart" onclick="addToCart('Keripik Ubi Ungu', 17000)">
-                                <i class="fas fa-shopping-cart"></i>
-                                Tambah ke Keranjang
-                            </button>
-                        </div>
-                    </div>
+                <div class="products-grid">
+                    @php
+                        $produkLain = [
+                            ['nama' => 'Basreng', 'deskripsi' => 'Baso goreng renyah pedas.', 'gambar' => 'basreng.jpg'],
+                            ['nama' => 'Kripik Kaca', 'deskripsi' => 'Tipis, garing, dan pedas.', 'gambar' => 'kripik-kaca.jpg'],
+                            ['nama' => 'Krupuk Seblak', 'deskripsi' => 'Krupuk pedas khas seblak.', 'gambar' => 'krupuk-seblak.jpg'],
+                            ['nama' => 'Seblak Kering', 'deskripsi' => 'Seblak instan siap makan.', 'gambar' => 'seblak-kering.jpg'],
+                            ['nama' => 'Makaroni Pedas', 'deskripsi' => 'Makaroni kering bumbu pedas.', 'gambar' => 'makaroni-pedas.jpg'],
+                            ['nama' => 'Keripik Singkong', 'deskripsi' => 'Singkong renyah bumbu balado.', 'gambar' => 'kripik-singkong.jpg'],
+                            ['nama' => 'Kacang Bawang', 'deskripsi' => 'Kacang goreng bawang gurih.', 'gambar' => 'kacang-bawang.jpg'],
+                            ['nama' => 'Pilus Pedas', 'deskripsi' => 'Pilus renyah rasa pedas.', 'gambar' => 'pilus-pedas.jpg'],
+                            ['nama' => 'Kerupuk Kulit', 'deskripsi' => 'Kerupuk kulit sapi gurih.', 'gambar' => 'kerupuk-kulit.jpg'],
+                        ];
+                    @endphp
 
-                    <!-- Keripik Nangka -->
+                    @foreach ($produkLain as $produk)
                     <div class="product-card">
                         <div class="product-image">
-                            <i class="fas fa-lemon"></i>
+                            <img src="{{ asset('images/'.$produk['gambar']) }}" alt="{{ $produk['nama'] }}" style="width:100%; height:100%; object-fit:cover;">
                         </div>
                         <div class="product-info">
-                            <h3>Keripik Nangka</h3>
-                            <p>Keripik nangka dengan aroma yang harum dan rasa yang unik</p>
-                            <div class="product-variants">
-                                <span class="variant-tag">Nangka</span>
-                                <span class="variant-tag">Harum</span>
-                            </div>
-                            <div class="product-price">Rp 19.000</div>
-                            <button class="add-to-cart" onclick="addToCart('Keripik Nangka', 19000)">
-                                <i class="fas fa-shopping-cart"></i>
-                                Tambah ke Keranjang
-                            </button>
+                            <h3>{{ $produk['nama'] }}</h3>
+                            <p>{{ $produk['deskripsi'] }}</p>
+                            <a href="https://wa.me/6281234567890?text=Halo%20saya%20mau%20pesan%20{{ urlencode($produk['nama']) }}" target="_blank" class="add-to-cart">
+                                <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                            </a>
                         </div>
                     </div>
+                    @endforeach
+                </div>
+            </section>
 
-                    <!-- Keripik Bayam -->
-                    <div class="product-card">
-                        <div class="product-image">
-                            <i class="fas fa-leaf"></i>
-                        </div>
-                        <div class="product-info">
-                            <h3>Keripik Bayam</h3>
-                            <p>Keripik bayam yang sehat dan bergizi tinggi untuk camilan sehat</p>
-                            <div class="product-variants">
-                                <span class="variant-tag">Bayam</span>
-                                <span class="variant-tag">Sehat</span>
-                            </div>
-                            <div class="product-price">Rp 20.000</div>
-                            <button class="add-to-cart" onclick="addToCart('Keripik Bayam', 20000)">
-                                <i class="fas fa-shopping-cart"></i>
-                                Tambah ke Keranjang
-                            </button>
-                        </div>
-                    </div>
+        </div>
+    </main>
 
-                    <!-- Keripik Jamur -->
-                    <div class="product-card">
-                        <div class="product-image">
-                            <i class="fas fa-mushroom"></i>
-                        </div>
-                        <div class="product-info">
-                            <h3>Keripik Jamur</h3>
-                            <p>Keripik jamur tiram yang renyah dengan cita rasa yang lezat</p>
-                            <div class="product-variants">
-                                <span class="variant-tag">Jamur</span>
-                                <span class="variant-tag">Protein</span>
-                            </div>
-                            <div class="product-price">Rp 22.000</div>
-                            <button class="add-to-cart" onclick="addToCart('Keripik Jamur', 22000)">
-                                <i class="fas fa-shopping-cart"></i>
-                                Tambah ke Keranjang
-                            </button>
-                        </div>
-                    </div>
+    {{-- Footer --}}
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Tentang Kami</h3>
+                <p>UMKM Kripik Pisang Maknyuss menghadirkan camilan khas dengan cita rasa autentik dan kualitas terbaik.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Hubungi Kami</h3>
+                <p>WhatsApp: 0812-3456-7890</p>
+                <p>Email: info@maknyuss.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Ikuti Kami</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
-        </section>
+        </div>
+        <p>&copy; 2025 Kripik Pisang Maknyuss. Semua Hak Dilindungi.</p>
+    </footer>
 
-        <!-- About Section -->
-        <section id="about" class="about-section">
-            <div class="container">
-                <div class="about-content">
-                    <div class="about-text">
-                        <h2>Tentang Kami</h2>
-                        <p>Keripik Nusantara adalah UMKM yang berkomitmen menghadirkan keripik berkualitas tinggi dengan cita rasa autentik Indonesia. Kami menggunakan bahan-bahan segar pilihan dan proses produksi yang higienis.</p>
-                        <ul class="about-features">
-                            <li><i class="fas fa-check"></i> Bahan-bahan segar dan berkualitas</li>
-                            <li><i class="fas fa-check"></i> Proses produksi yang higienis</li>
-                            <li><i class="fas fa-check"></i>
+</body>
+</html>

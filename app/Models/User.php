@@ -6,8 +6,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Model;
-
 
 class User extends Authenticatable
 {
@@ -20,13 +18,9 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-         'name',
-        'description',
-        'price',
-        'image',
-        'category',
-        'variants',
-        'is_bestseller'
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -37,10 +31,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-
-
-
-
     ];
 
     /**
@@ -51,9 +41,8 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-             'variants' => 'array',
-        'is_bestseller' => 'boolean'
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
         ];
     }
-
 }
