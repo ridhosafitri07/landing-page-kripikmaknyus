@@ -1,12 +1,24 @@
-{{-- resources/views/landing.blade.php --}}
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kripik Pisang Maknyuss</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Kripik Pisang Maknyuss | UMKM Camilan Premium</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-brown: #8B4513;
+            --secondary-brown: #A0522D;
+            --light-brown: #D2B48C;
+            --cream: #F5F1E8;
+            --light-cream: #FAF7F0;
+            --gold: #FFD700;
+            --dark-text: #2C1810;
+            --shadow: rgba(139, 69, 19, 0.1);
+            --shadow-hover: rgba(139, 69, 19, 0.2);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,544 +26,777 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f1e8 0%, #ede4d3 100%);
-            color: #5d4e37;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-cream);
+            color: var(--dark-text);
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
         }
 
         /* Header */
         .header {
-            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--secondary-brown) 100%);
+            backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px var(--shadow);
+        }
+
+        .header.scrolled {
+            background: rgba(139, 69, 19, 0.95);
+            backdrop-filter: blur(15px);
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
+            font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
-            font-weight: bold;
+            font-weight: 700;
+            color: white;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .logo i {
-            color: #ffd700;
+            color: var(--gold);
+            font-size: 2rem;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-menu a {
             color: white;
             text-decoration: none;
-            transition: color 0.3s;
             font-weight: 500;
-        }
-
-        .nav-menu a:hover {
-            color: #ffd700;
-        }
-
-        .cart-icon {
             position: relative;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
         }
 
-        .cart-icon:hover {
-            color: #ffd700;
-        }
-
-        .cart-count {
+        .nav-menu a::after {
+            content: '';
             position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #ff4444;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
             color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: bold;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         /* Hero Section */
         .hero {
-            background-image: url('{{ asset('assets/bg.png') }}');
             height: 100vh;
+            background: linear-gradient(135deg, var(--cream) 0%, #E8DCC0 100%);
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #8b4513;
-            background-size: cover;
-            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="%23D2B48C" opacity="0.1"/><circle cx="80" cy="40" r="1.5" fill="%23A0522D" opacity="0.1"/><circle cx="40" cy="80" r="1" fill="%23D2B48C" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            animation: slideInLeft 1s ease-out;
         }
 
         .hero-content h1 {
+            font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-weight: 700;
+            color: var(--primary-brown);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content .highlight {
+            color: var(--gold);
+            position: relative;
+        }
+
+        .hero-content .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), transparent);
         }
 
         .hero-content p {
             font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            color: var(--secondary-brown);
+            line-height: 1.8;
         }
 
-        .cta-button {
-            background: linear-gradient(45deg, #ffd700, #ffed4e);
-            color: #8b4513;
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .cta-primary, .cta-secondary {
             padding: 15px 30px;
-            border: none;
             border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
+            font-weight: 600;
             text-decoration: none;
-            display: inline-block;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .cta-button:hover {
+        .cta-primary {
+            background: linear-gradient(135deg, var(--primary-brown), var(--secondary-brown));
+            color: white;
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px var(--shadow-hover);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--primary-brown);
+            border: 2px solid var(--primary-brown);
+        }
+
+        .cta-secondary:hover {
+            background: var(--primary-brown);
+            color: white;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
         }
 
-        /* Main Content */
-        .main-content {
-            margin-top: 80px;
-            padding: 4rem 2rem;
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: slideInRight 1s ease-out;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .hero-image {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--light-brown), #E6D3A3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 60px var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            animation: rotate 20s linear infinite;
+        }
+
+        .hero-image i {
+            font-size: 8rem;
+            color: var(--primary-brown);
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        /* Floating elements */
+        .floating-element {
+            position: absolute;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 20%;
+            right: 10%;
+            font-size: 2rem;
+            color: var(--gold);
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            bottom: 20%;
+            left: 10%;
+            font-size: 1.5rem;
+            color: var(--light-brown);
+            animation-delay: 2s;
         }
 
         /* Featured Section */
         .featured {
-            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
-            color: white;
-            padding: 4rem 2rem;
-            border-radius: 20px;
-            margin: 2rem auto;
-            max-width: 1200px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 6rem 2rem;
+            background: white;
+            position: relative;
         }
 
-        .featured-content {
+        .featured::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--light-brown), transparent);
+        }
+
+        .featured-container {
+            max-width: 1400px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 5rem;
             align-items: center;
         }
 
-        .featured-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #ffd700;
+        .featured-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--primary-brown);
+            margin-bottom: 2rem;
+            line-height: 1.3;
         }
 
-        .featured-text p {
+        .featured-content p {
             font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-brown);
             line-height: 1.8;
-            margin-bottom: 1rem;
         }
 
-        .featured-image {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .featured-image img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .featured-image:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Products Section */
-        .products-section {
-            padding: 4rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: #8b4513;
-            margin-bottom: 0.5rem;
-        }
-
-        .section-title p {
-            font-size: 1.1rem;
-            color: #a0522d;
-        }
-
-        .products-grid {
+        .featured-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .product-card {
-            background: white;
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--cream);
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-brown);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--secondary-brown);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .featured-image {
+            position: relative;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            transition: all 0.3s;
+            box-shadow: 0 25px 50px var(--shadow);
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .featured-image:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 6rem 2rem;
+            background: var(--light-cream);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--primary-brown);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary-brown);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px var(--shadow);
+            transition: all 0.3s ease;
             position: relative;
         }
 
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 25px 50px var(--shadow-hover);
         }
 
         .product-image {
-            height: 250px;
-            background: linear-gradient(45deg, #deb887, #d2b48c);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 280px;
+            background: linear-gradient(135deg, var(--light-brown), #E6D3A3);
             position: relative;
             overflow: hidden;
         }
 
-        .product-image i {
-            font-size: 4rem;
-            color: #8b4513;
-            opacity: 0.7;
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gold);
+            color: var(--primary-brown);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
         }
 
         .product-info {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
-        .product-info h3 {
-            font-size: 1.3rem;
-            color: #8b4513;
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary-brown);
             margin-bottom: 0.5rem;
+            font-weight: 600;
         }
 
-        .product-info p {
-            color: #a0522d;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
+        .product-description {
+            color: var(--secondary-brown);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
 
         .product-price {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #d2691e;
-            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-brown);
+            margin-bottom: 1.5rem;
         }
 
-        .product-variants {
+        .product-features {
             display: flex;
             gap: 0.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
         }
 
-        .variant-tag {
-            background: #f5f1e8;
-            color: #8b4513;
-            padding: 0.3rem 0.8rem;
+        .feature-tag {
+            background: var(--cream);
+            color: var(--primary-brown);
+            padding: 6px 12px;
             border-radius: 15px;
             font-size: 0.8rem;
-            border: 1px solid #deb887;
+            font-weight: 500;
         }
 
-        .add-to-cart {
-            background: linear-gradient(45deg, #8b4513, #a0522d);
+        .order-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-brown), var(--secondary-brown));
             color: white;
             border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
+            padding: 15px;
+            border-radius: 15px;
+            font-weight: 600;
             cursor: pointer;
-            width: 100%;
-            font-weight: bold;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            text-decoration: none;
         }
 
-        .add-to-cart:hover {
-            background: linear-gradient(45deg, #a0522d, #8b4513);
-            transform: translateY(-1px);
+        .order-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px var(--shadow);
         }
 
-        .best-seller {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #ffd700;
-            color: #8b4513;
-            padding: 5px 15px;
+        /* Process Section */
+        .process-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .process-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
             border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
+            background: var(--light-cream);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-brown), var(--secondary-brown));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-brown);
+            margin-bottom: 1rem;
+        }
+
+        .step-description {
+            color: var(--secondary-brown);
+            line-height: 1.6;
         }
 
         /* About Section */
         .about-section {
-            background: white;
-            padding: 4rem 2rem;
-            border-radius: 20px;
-            margin: 2rem 0;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 6rem 2rem;
+            background: var(--cream);
         }
 
-        .about-content {
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 5rem;
             align-items: center;
         }
 
-        .about-text h2 {
-            font-size: 2.2rem;
-            color: #8b4513;
-            margin-bottom: 1rem;
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--primary-brown);
+            margin-bottom: 2rem;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--secondary-brown);
+            margin-bottom: 2rem;
         }
 
         .about-features {
             list-style: none;
-            margin-top: 1.5rem;
         }
 
         .about-features li {
-            padding: 0.5rem 0;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
         .about-features i {
-            color: #ffd700;
+            color: var(--gold);
+            font-size: 1.2rem;
             width: 20px;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px var(--shadow);
         }
 
         /* Footer */
         .footer {
-            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--secondary-brown) 100%);
             color: white;
-            padding: 3rem 2rem 1rem;
-            text-align: center;
+            padding: 4rem 2rem 2rem;
         }
 
-        .footer-content {
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
         .footer-section h3 {
-            color: #ffd700;
-            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
         }
 
-        .footer-section a {
-            color: white;
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            transition: color 0.3s;
+            line-height: 1.8;
+            transition: color 0.3s ease;
         }
 
         .footer-section a:hover {
-            color: #ffd700;
+            color: var(--gold);
         }
 
-        .social-icons {
+        .social-links {
             display: flex;
-            justify-content: center;
             gap: 1rem;
             margin-top: 1rem;
         }
 
-        .social-icons a {
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
 
-        .social-icons a:hover {
-            background: #ffd700;
-            color: #8b4513;
-            transform: translateY(-2px);
+        .social-link:hover {
+            background: var(--gold);
+            color: var(--primary-brown);
+            transform: translateY(-3px);
         }
 
-        /* Cart Modal */
-        .cart-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 2000;
-        }
-
-        .cart-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #eee;
-        }
-
-        .close-cart {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #8b4513;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .cart-total {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 2px solid #8b4513;
+        .footer-bottom {
             text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.6);
         }
 
-        .checkout-btn {
-            background: linear-gradient(45deg, #ffd700, #ffed4e);
-            color: #8b4513;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 1rem;
-            transition: all 0.3s;
+        /* Animations */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
-        .checkout-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
             .nav-menu {
                 display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
             }
 
             .hero-content h1 {
                 font-size: 2.5rem;
             }
 
-            .featured-content,
-            .about-content {
+            .hero-image {
+                width: 300px;
+                height: 300px;
+            }
+
+            .featured-container,
+            .about-container {
                 grid-template-columns: 1fr;
+                gap: 3rem;
             }
 
             .products-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
-            .hero-content p {
-                font-size: 1rem;
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
             }
 
-            .section-title h2 {
-                font-size: 2rem;
+            .process-steps {
+                grid-template-columns: 1fr;
             }
-        }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .section-title {
+                font-size: 2.2rem;
             }
         }
 
-        .product-card {
-            animation: fadeInUp 0.6s ease forwards;
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
         }
 
-        .product-card:nth-child(2) { animation-delay: 0.1s; }
-        .product-card:nth-child(3) { animation-delay: 0.2s; }
-        .product-card:nth-child(4) { animation-delay: 0.3s; }
-        .product-card:nth-child(5) { animation-delay: 0.4s; }
-        .product-card:nth-child(6) { animation-delay: 0.5s; }
-        .product-card:nth-child(7) { animation-delay: 0.6s; }
-        .product-card:nth-child(8) { animation-delay: 0.7s; }
-        .product-card:nth-child(9) { animation-delay: 0.8s; }
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-        /* Loading Animation */
+        /* Loading animation */
         .loading {
             display: inline-block;
             width: 20px;
@@ -568,177 +813,580 @@
     </style>
 </head>
 <body>
-
-    {{-- Header --}}
-    <header class="header">
+    <!-- Header -->
+    <header class="header" id="header">
         <div class="nav-container">
-            <div class="logo"><i class="fas fa-leaf"></i> Kripik Pisang Maknyuss</div>
-            <ul class="nav-menu">
-                <li><a href="#original">Produk Original</a></li>
-                <li><a href="#proses">Proses Produksi</a></li>
-                <li><a href="#lainnya">Camilan Lain</a></li>
-            </ul>
+            <a href="#" class="logo">
+                <i class="fas fa-leaf"></i>
+                Kripik Pisang Maknyuss
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#hero" class="nav-link active">Beranda</a></li>
+                    <li><a href="#produk-original" class="nav-link">Produk Original</a></li>
+                    <li><a href="#proses" class="nav-link">Proses</a></li>
+                    <li><a href="#produk-lain" class="nav-link">Produk Lain</a></li>
+                    <li><a href="#tentang" class="nav-link">Tentang</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
-    {{-- Hero --}}
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Lezatnya Kripik Pisang Maknyuss</h1>
-            <p>Nikmati sensasi kriuk dan rasa yang menggoda, langsung dari UMKM lokal terbaik.</p>
-            <a href="#original" class="cta-button">Lihat Produk</a>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>
+                    Nikmati Kelezatan<br>
+                    <span class="highlight">Kripik Pisang</span><br>
+                    Premium
+                </h1>
+                <p>
+                    Dibuat dengan bahan pilihan terbaik dan proses tradisional yang higienis. 
+                    Setiap gigitan menghadirkan kerenyahan sempurna dan cita rasa autentik 
+                    yang tak terlupakan.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#produk-original" class="cta-primary">
+                        <i class="fas fa-shopping-bag"></i>
+                        Lihat Produk
+                    </a>
+                    <a href="https://wa.me/6283107772136" class="cta-secondary">
+                        <i class="fab fa-whatsapp"></i>
+                        Hubungi Kami
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image">
+                    <i class="fas fa-cookie-bite"></i>
+                </div>
+            </div>
+        </div>
+        <div class="floating-element">
+            <i class="fas fa-star"></i>
+        </div>
+        <div class="floating-element">
+            <i class="fas fa-heart"></i>
         </div>
     </section>
 
-    <main class="main-content">
-        <div class="container">
-
-            <!-- Tentang Kami -->
-            <section id="sejarah" style="padding: 50px 0; background-color: #A0522D; border-radius: 20px; box-shadow: 0 6px 15px rgba(0,0,0,0.15); display: flex; flex-direction: column; justify-content: center;">
-                <div style="max-width: 1100px; margin: auto; display: flex; gap: 40px; align-items: stretch; flex-wrap: wrap;">
-
-                    <!-- Kotak teks -->
-                    <div style="flex: 1; min-width: 320px; background-color: #A0522D; color: white; padding: 40px; display: flex; flex-direction: column; justify-content: center;">
-                        <h2 style="color: #FFD700; font-size: 28px; font-weight: bold; margin-bottom: 20px;">Sejarah</h2>
-                        <p style="line-height: 1.6; margin-bottom: 15px;">
-                            Keripik Nusantara telah menjadi bagian dari tradisi kuliner Indonesia selama bertahun-tahun.
-                            Kami menghadirkan cita rasa autentik dengan menggunakan bahan-bahan pilihan terbaik dan proses pengolahan yang higienis.
-                        </p>
-                        <p style="line-height: 1.6;">
-                            Setiap gigitan keripik kami menghadirkan kelezatan yang tak terlupakan, mulai dari keripik pisang
-                            dengan berbagai varian rasa hingga keripik talas yang gurih dan renyah.
-                        </p>
+    <!-- Featured Section -->
+    <section class="featured">
+        <div class="featured-container">
+            <div class="featured-content animate-on-scroll">
+                <h2>Tradisi Rasa yang Autentik</h2>
+                <p>
+                    Sejak tahun 2018, kami telah menghadirkan kripik pisang berkualitas premium 
+                    dengan mempertahankan resep tradisional yang diwariskan turun temurun.
+                </p>
+                <p>
+                    Setiap produk kami dibuat dengan penuh cinta dan kehati-hatian, menggunakan 
+                    pisang pilihan yang matang sempurna dan bumbu rahasia keluarga.
+                </p>
+                <div class="featured-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">1000+</span>
+                        <span class="stat-label">Pelanggan Puas</span>
                     </div>
-
-                    <!-- Kotak gambar -->
-                    <div style="flex: 1; min-width: 320px; background-color: #D2A679; border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 15px rgba(0,0,0,0.15);">
-                        <img src="https://img.icons8.com/ios-filled/100/8b4513/leaf.png" alt="Ikon Daun" style="width: 80px; height: auto;">
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Varian Rasa</span>
                     </div>
-
                 </div>
-            </section>
-
-
-            {{-- Produk Original --}}
-            <section id="original" class="products-section">
-                <div class="section-title">
-                    <h2>Produk Original</h2>
-                    <p>Kami sajikan kripik pisang dengan rasa autentik pilihan</p>
-                </div>
-
-                <div class="products-grid">
-                    @php
-                        $produkOriginal = [
-                            ['nama' => 'Kripik Pisang Manis','harga' => '60.000/kg', 'deskripsi' => 'Manis alami dari pisang pilihan.', 'gambar' => 'kripik-manis.jpg'],
-                            ['nama' => 'Kripik Pisang Asin', 'harga' => '60.000/kg', 'deskripsi' => 'Gurih asin yang bikin nagih.', 'gambar' => 'kripik-asin.jpg'],
-                            ['nama' => 'Kripik Pisang Cokelat', 'harga' => '60.000/kg', 'deskripsi' => 'Kripik pisang dibalut coklat.', 'gambar' => 'kripik-cokelat.jpg'],
-                            ['nama' => 'Kripik Pisang Balado', 'harga' => '60.000/kg', 'deskripsi' => 'Bumbu baladonya bikin beda.', 'gambar' => 'kripik-balado.jpg'],
-                            ['nama' => 'Kripik Talas', 'harga' => '60.000/kg', 'deskripsi' => 'Renyaaan talas pilihan.', 'gambar' => 'kripik-talas.jpg'],
-                            ['nama' => 'Kripik Sukun', 'harga' => '60.000/kg', 'deskripsi' => 'Nikmatnya sukun yang garing.', 'gambar' => 'kripik-sukun.jpg'],
-                        ];
-                    @endphp
-
-                    @foreach ($produkOriginal as $produk)
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="{{ asset('images/'.$produk['gambar']) }}" alt="{{ $produk['nama'] }}" style="width:100%; height:100%; object-fit:cover;">
-                        </div>
-                        <div class="product-info">
-                            <h3>{{ $produk['nama'] }}</h3>
-                            <p>{{ $produk['deskripsi'] }}</p>
-                            <a href="https://wa.me/6283107772136?text=Halo%20saya%20mau%20pesan%20{{ urlencode($produk['nama']) }}" target="_blank" class="add-to-cart">
-                                <i class="fab fa-whatsapp"></i> Pesan Sekarang
-                            </a>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </section>
-
-            <!-- Proses Produksi -->
-            <section id="proses" style="padding: 40px 0;">
-                <h2 style="text-align: center;">Proses Produksi Kami</h2>
-                <div style="
-                    display: flex;
-                    gap: 0;
-                    border: 8px solid #e2c78f; /* warna frame */
-                    box-shadow: 4px 4px 8px rgba(0,0,0,0.2);
-                    margin-top: 20px;
-                ">
-                    <img src="{{ asset('assets/mentah.jpg') }}" style="width: 20%; height: auto;">
-                    <img src="{{ asset('assets/goreng.jpg') }}" style="width: 20%; height: auto;">
-                    <img src="{{ asset('assets/mateng.jpg') }}" style="width: 20%; height: auto;">
-                    <img src="{{ asset('assets/mateng.jpg') }}" style="width: 20%; height: auto;">
-                    <img src="{{ asset('assets/mateng.jpg') }}" style="width: 20%; height: auto;">
-                </div>
-            </section>
-
-
-            {{-- Produk Camilan Lain --}}
-            <section id="lainnya" class="products-section">
-                <div class="section-title">
-                    <h2>Camilan Lain</h2>
-                    <p>Varian camilan gurih dan renyah lainnya</p>
-                </div>
-
-                <div class="products-grid">
-                    @php
-                        $produkLain = [
-                            ['nama' => 'Basreng', 'deskripsi' => 'Baso goreng renyah pedas.', 'gambar' => 'basreng.jpg'],
-                            ['nama' => 'Kripik Kaca', 'deskripsi' => 'Tipis, garing, dan pedas.', 'gambar' => 'kripik-kaca.jpg'],
-                            ['nama' => 'Krupuk Seblak', 'deskripsi' => 'Krupuk pedas khas seblak.', 'gambar' => 'krupuk-seblak.jpg'],
-                            ['nama' => 'Seblak Kering', 'deskripsi' => 'Seblak instan siap makan.', 'gambar' => 'seblak-kering.jpg'],
-                            ['nama' => 'Makaroni Pedas', 'deskripsi' => 'Makaroni kering bumbu pedas.', 'gambar' => 'makaroni-pedas.jpg'],
-                            ['nama' => 'Keripik Singkong', 'deskripsi' => 'Singkong renyah bumbu balado.', 'gambar' => 'kripik-singkong.jpg'],
-                            ['nama' => 'Kacang Bawang', 'deskripsi' => 'Kacang goreng bawang gurih.', 'gambar' => 'kacang-bawang.jpg'],
-                            ['nama' => 'Pilus Pedas', 'deskripsi' => 'Pilus renyah rasa pedas.', 'gambar' => 'pilus-pedas.jpg'],
-                            ['nama' => 'Kerupuk Kulit', 'deskripsi' => 'Kerupuk kulit sapi gurih.', 'gambar' => 'kerupuk-kulit.jpg'],
-                        ];
-                    @endphp
-
-                    @foreach ($produkLain as $produk)
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="{{ asset('images/'.$produk['gambar']) }}" alt="{{ $produk['nama'] }}" style="width:100%; height:100%; object-fit:cover;">
-                        </div>
-                        <div class="product-info">
-                            <h3>{{ $produk['nama'] }}</h3>
-                            <p>{{ $produk['deskripsi'] }}</p>
-                            <a href="https://wa.me/6281234567890?text=Halo%20saya%20mau%20pesan%20{{ urlencode($produk['nama']) }}" target="_blank" class="add-to-cart">
-                                <i class="fab fa-whatsapp"></i> Pesan Sekarang
-                            </a>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </section>
-
+            </div>
+            <div class="featured-image animate-on-scroll">
+                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kripik Pisang Premium">
+            </div>
         </div>
-    </main>
+    </section>
 
-    {{-- Footer --}}
+    <!-- Products Original Section -->
+    <section id="produk-original" class="products-section">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Produk Original Kami</h2>
+            <p class="section-subtitle">
+                Koleksi kripik pisang premium dengan berbagai varian rasa yang menggugah selera
+            </p>
+        </div>
+
+        <div class="products-grid">
+            <div class="product-card animate-on-scroll">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kripik Pisang Manis">
+                    <div class="product-badge">Terlaris</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Kripik Pisang Asin</h3>
+                    <p class="product-description">Gurih asin yang bikin nagih, cocok sebagai teman santai atau camilan sehat.</p>
+                    <div class="product-price">Rp 60.000/kg</div>
+                    <div class="product-features">
+                        <span class="feature-tag">Gurih</span>
+                        <span class="feature-tag">Rendah Lemak</span>
+                        <span class="feature-tag">Krispy</span>
+                    </div>
+                    <a href="https://wa.me/6283107772136?text=Halo%20saya%20mau%20pesan%20Kripik%20Pisang%20Asin" class="order-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card animate-on-scroll">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1511381939415-e44015466834?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kripik Pisang Cokelat">
+                    <div class="product-badge">Premium</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Kripik Pisang Cokelat</h3>
+                    <p class="product-description">Perpaduan sempurna pisang renyah dengan lapisan cokelat premium yang meleleh di mulut.</p>
+                    <div class="product-price">Rp 75.000/kg</div>
+                    <div class="product-features">
+                        <span class="feature-tag">Cokelat Premium</span>
+                        <span class="feature-tag">Manis</span>
+                        <span class="feature-tag">Limited</span>
+                    </div>
+                    <a href="https://wa.me/6283107772136?text=Halo%20saya%20mau%20pesan%20Kripik%20Pisang%20Cokelat" class="order-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card animate-on-scroll">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kripik Pisang Balado">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Kripik Pisang Balado</h3>
+                    <p class="product-description">Sensasi pedas manis bumbu balado yang khas, memberikan pengalaman rasa yang unik.</p>
+                    <div class="product-price">Rp 65.000/kg</div>
+                    <div class="product-features">
+                        <span class="feature-tag">Pedas Manis</span>
+                        <span class="feature-tag">Bumbu Tradisional</span>
+                        <span class="feature-tag">Spicy</span>
+                    </div>
+                    <a href="https://wa.me/6283107772136?text=Halo%20saya%20mau%20pesan%20Kripik%20Pisang%20Balado" class="order-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card animate-on-scroll">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1582450871667-5d5876cbcb6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kripik Talas">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Kripik Talas</h3>
+                    <p class="product-description">Kripik talas pilihan dengan tekstur renyah yang khas dan rasa gurih yang otentik.</p>
+                    <div class="product-price">Rp 60.000/kg</div>
+                    <div class="product-features">
+                        <span class="feature-tag">Talas Pilihan</span>
+                        <span class="feature-tag">Renyah</span>
+                        <span class="feature-tag">Organik</span>
+                    </div>
+                    <a href="https://wa.me/6283107772136?text=Halo%20saya%20mau%20pesan%20Kripik%20Talas" class="order-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card animate-on-scroll">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kripik Sukun">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Kripik Sukun</h3>
+                    <p class="product-description">Nikmatnya sukun yang diolah menjadi kripik garing dengan cita rasa yang menggugah selera.</p>
+                    <div class="product-price">Rp 60.000/kg</div>
+                    <div class="product-features">
+                        <span class="feature-tag">Sukun Fresh</span>
+                        <span class="feature-tag">Garing</span>
+                        <span class="feature-tag">Natural</span>
+                    </div>
+                    <a href="https://wa.me/6283107772136?text=Halo%20saya%20mau%20pesan%20Kripik%20Sukun" class="order-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="proses" class="process-section">
+        <div class="process-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Proses Produksi Berkualitas</h2>
+                <p class="section-subtitle">
+                    Setiap tahap produksi dilakukan dengan standar kebersihan tinggi dan kontrol kualitas ketat
+                </p>
+            </div>
+
+            <div class="process-steps">
+                <div class="process-step animate-on-scroll">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Pemilihan Bahan</h3>
+                    <p class="step-description">
+                        Memilih pisang, talas, dan sukun yang matang sempurna dengan kualitas terbaik dari petani lokal terpercaya.
+                    </p>
+                </div>
+
+                <div class="process-step animate-on-scroll">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Persiapan & Pencucian</h3>
+                    <p class="step-description">
+                        Membersihkan dan mempersiapkan bahan dengan standar kebersihan tinggi menggunakan air bersih dan peralatan steril.
+                    </p>
+                </div>
+
+                <div class="process-step animate-on-scroll">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Pemotongan Presisi</h3>
+                    <p class="step-description">
+                        Memotong bahan dengan ketebalan yang konsisten menggunakan alat pemotong khusus untuk hasil yang optimal.
+                    </p>
+                </div>
+
+                <div class="process-step animate-on-scroll">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Penggorengan Tradisional</h3>
+                    <p class="step-description">
+                        Menggoreng dengan minyak berkualitas tinggi pada suhu yang tepat untuk menghasilkan tekstur renyah sempurna.
+                    </p>
+                </div>
+
+                <div class="process-step animate-on-scroll">
+                    <div class="step-number">5</div>
+                    <h3 class="step-title">Pembumbuan Premium</h3>
+                    <p class="step-description">
+                        Menambahkan bumbu dan rasa menggunakan resep rahasia keluarga yang telah teruji selama bertahun-tahun.
+                    </p>
+                </div>
+
+                <div class="process-step animate-on-scroll">
+                    <div class="step-number">6</div>
+                    <h3 class="step-title">Pengemasan Higienis</h3>
+                    <p class="step-description">
+                        Mengemas produk dalam kemasan food grade yang kedap udara untuk menjaga kesegaran dan kualitas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Products Section -->
+    <section id="produk-lain" class="products-section">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Camilan Spesial Lainnya</h2>
+            <p class="section-subtitle">
+                Beragam pilihan camilan gurih dan renyah untuk melengkapi koleksi snack favorit Anda
+            </p>
+        </div>
+
+        <div class="products-grid">
+            <div class="product-card animate-on-scroll">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1599490659213-e2b9527bd087?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Basreng">
+                    <div class="product-badge">Hot</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Basreng Premium</h3>
+                    <p class="product-description">Baso goreng renyah dengan bumbu pedas yang menggigit, cocok untuk pecinta makanan pedas.</p>
+                    <div class="product-features">
+                        <span class="feature-tag">Extra Pedas</span>
+                        <span class="feature-tag">Renyah</span>
+                    </div>
+                    <a href="https://wa.me/6283107772136?text=Halo%20saya%20mau%20pesan%20Basreng%20Premium" class="order-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card animate-on-scroll">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1606787564060-b2f2f7351c8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kripik Kaca">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Kripik Kaca</h3>
+                    <p class="product-description">Kripik tipis transparan dengan rasa pedas manis yang unik dan tekstur yang renyah.</p>
+                    <div class="product-features">
+                        <span class="feature-tag">Tipis</span>
+                        <span class="feature-tag">Pedas Manis</span>
+                    </div>
+                    <a href="https://wa.me/6283107772136?text=Halo%20saya%20mau%20pesan%20Kripik%20Kaca" class="order-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card animate-on-scroll">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Krupuk Seblak">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Krupuk Seblak</h3>
+                    <p class="product-description">Krupuk dengan cita rasa khas seblak yang pedas dan gurih, mengingatkan pada street food favorit.</p>
+                    <div class="product-features">
+                        <span class="feature-tag">Rasa Seblak</span>
+                        <span class="feature-tag">Gurih Pedas</span>
+                    </div>
+                    <a href="https://wa.me/6283107772136?text=Halo%20saya%20mau%20pesan%20Krupuk%20Seblak" class="order-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card animate-on-scroll">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Seblak Kering">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Seblak Kering</h3>
+                    <p class="product-description">Seblak instan siap makan dengan bumbu pedas yang autentik dan tekstur kenyal yang pas.</p>
+                    <div class="product-features">
+                        <span class="feature-tag">Instan</span>
+                        <span class="feature-tag">Pedas Otentik</span>
+                    </div>
+                    <a href="https://wa.me/6283107772136?text=Halo%20saya%20mau%20pesan%20Seblak%20Kering" class="order-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card animate-on-scroll">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Makaroni Pedas">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Makaroni Pedas</h3>
+                    <p class="product-description">Makaroni kering dengan bumbu pedas yang meresap sempurna, camilan favorit anak dan dewasa.</p>
+                    <div class="product-features">
+                        <span class="feature-tag">Bumbu Meresap</span>
+                        <span class="feature-tag">Family Favorite</span>
+                    </div>
+                    <a href="https://wa.me/6283107772136?text=Halo%20saya%20mau%20pesan%20Makaroni%20Pedas" class="order-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card animate-on-scroll">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1606787564060-b2f2f7351c8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Keripik Singkong">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Keripik Singkong</h3>
+                    <p class="product-description">Singkong renyah dengan bumbu balado yang pedas dan gurih, camilan tradisional yang tak lekang waktu.</p>
+                    <div class="product-features">
+                        <span class="feature-tag">Tradisional</span>
+                        <span class="feature-tag">Balado</span>
+                    </div>
+                    <a href="https://wa.me/6283107772136?text=Halo%20saya%20mau%20pesan%20Keripik%20Singkong" class="order-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="tentang" class="about-section">
+        <div class="about-container">
+            <div class="about-content animate-on-scroll">
+                <h2>Tentang Kripik Pisang Maknyuss</h2>
+                <p class="about-text">
+                    Didirikan sejak 2018, Kripik Pisang Maknyuss telah menjadi pilihan utama untuk camilan premium 
+                    berkualitas tinggi. Kami berkomitmen untuk menghadirkan produk terbaik dengan mempertahankan 
+                    cita rasa autentik dan standar kualitas yang tinggi.
+                </p>
+                <p class="about-text">
+                    Dengan menggunakan bahan-bahan pilihan dari petani lokal dan proses produksi yang higienis, 
+                    setiap produk kami dibuat dengan penuh dedikasi untuk kepuasan pelanggan.
+                </p>
+                <ul class="about-features">
+                    <li><i class="fas fa-check-circle"></i> Bahan baku pilihan berkualitas premium</li>
+                    <li><i class="fas fa-check-circle"></i> Proses produksi higienis dan modern</li>
+                    <li><i class="fas fa-check-circle"></i> Tanpa pengawet berbahaya</li>
+                    <li><i class="fas fa-check-circle"></i> Kemasan food grade yang aman</li>
+                    <li><i class="fas fa-check-circle"></i> Rasa autentik dengan resep turun temurun</li>
+                    <li><i class="fas fa-check-circle"></i> Harga terjangkau untuk kualitas premium</li>
+                </ul>
+            </div>
+            <div class="about-image animate-on-scroll">
+                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tim Kripik Pisang Maknyuss">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
+        <div class="footer-container">
             <div class="footer-section">
-                <h3>Tentang Kami</h3>
-                <p>UMKM Kripik Pisang Maknyuss menghadirkan camilan khas dengan cita rasa autentik dan kualitas terbaik.</p>
+                <h3>Kripik Pisang Maknyuss</h3>
+                <p>
+                    UMKM terpercaya yang menghadirkan camilan premium dengan cita rasa autentik 
+                    dan kualitas terbaik untuk keluarga Indonesia.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/6283107772136" class="social-link">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Produk Kami</h3>
+                <p><a href="#produk-original">Kripik Pisang Original</a></p>
+                <p><a href="#produk-original">Kripik Talas & Sukun</a></p>
+                <p><a href="#produk-lain">Camilan Spesial</a></p>
+                <p><a href="#produk-lain">Paket Hemat</a></p>
             </div>
             <div class="footer-section">
                 <h3>Hubungi Kami</h3>
-                <p>WhatsApp: 0812-3456-7890</p>
-                <p>Email: info@maknyuss.com</p>
+                <p><i class="fas fa-phone"></i> WhatsApp: 083107772136</p>
+                <p><i class="fas fa-envelope"></i> Email: info@kripikpisangmaknyuss.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Godean, Yogyakarta, Indonesia</p>
+                <p><i class="fas fa-clock"></i> Senin - Sabtu: 08:00 - 17:00</p>
             </div>
             <div class="footer-section">
-                <h3>Ikuti Kami</h3>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                </div>
+                <h3>Informasi</h3>
+                <p><a href="#tentang">Tentang Kami</a></p>
+                <p><a href="#proses">Proses Produksi</a></p>
+                <p><a href="#">Cara Pemesanan</a></p>
+                <p><a href="#">Syarat & Ketentuan</a></p>
             </div>
         </div>
-        <p>&copy; 2025 Kripik Pisang Maknyuss. Semua Hak Dilindungi.</p>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Kripik Pisang Maknyuss. Semua Hak Dilindungi. | Dibuat dengan ❤️ untuk UMKM Indonesia</p>
+        </div>
     </footer>
 
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                // Remove active class from all links
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Smooth scroll to target
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animate-on-scroll class
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Active navigation based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                const sectionHeight = section.offsetHeight;
+                
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Mobile menu toggle (for future enhancement)
+        const mobileToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        mobileToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            const icon = this.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Order button loading effect
+        document.querySelectorAll('.order-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const originalContent = this.innerHTML;
+                this.innerHTML = '<div class="loading"></div> Menghubungkan...';
+                this.style.pointerEvents = 'none';
+                
+                setTimeout(() => {
+                    this.innerHTML = originalContent;
+                    this.style.pointerEvents = 'auto';
+                }, 2000);
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const heroImage = document.querySelector('.hero-image');
+            if (heroImage) {
+                heroImage.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+    </script>
 </body>
-</html>
