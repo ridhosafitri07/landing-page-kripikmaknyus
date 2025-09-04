@@ -688,7 +688,7 @@
                     Maknyuss
                 </h1>
                 <p>
-                    Nikmati sensasi kriuk dan rasa yang menggoda, langsung dari UMKM lokal terbaik. 
+                    Nikmati sensasi kriuk dan rasa yang menggoda, langsung dari UMKM lokal terbaik.
                     Dibuat dengan bahan pilihan dan proses tradisional yang higienis.
                 </p>
                 <div class="cta-buttons">
@@ -696,7 +696,7 @@
                         <i class="fas fa-shopping-bag"></i>
                         Lihat Produk
                     </a>
-                    <a href="https://wa.me/6283107772136" class="cta-secondary">
+                    <a href="https://wa.me/62895378213230" class="cta-secondary">
                         <i class="fab fa-whatsapp"></i>
                         Hubungi Kami
                     </a>
@@ -704,7 +704,7 @@
             </div>
             <div class="hero-visual">
                 <div class="hero-image">
-                    <i class="fas fa-cookie-bite"></i>
+                    <img src="assets/depan.png">
                 </div>
             </div>
         </div>
@@ -748,13 +748,13 @@
         <div class="products-grid">
             <div class="product-card animate-on-scroll">
                 <div class="product-image">
-                    <img src="assets/kripik-manis.jpg" alt="Kripik Pisang Manis">
+                    <img src="assets/manis.jpg" alt="Kripik Pisang Manis">
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">Kripik Pisang Manis</h3>
                     <p class="product-description">Manis alami dari pisang pilihan.</p>
                     <div class="product-price">Rp 60.000/kg</div>
-                    <a href="https://wa.me/6283107772136?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Kripik Pisang Manis%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
+                    <a href="https://wa.me/62895378213230?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Kripik Pisang Manis%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
                         <i class="fab fa-whatsapp"></i>
                         Pesan Sekarang
                     </a>
@@ -763,14 +763,14 @@
 
             <div class="product-card animate-on-scroll">
                 <div class="product-image">
-                    <img src="assets/kripik-asin.jpg" alt="Kripik Pisang Asin">
+                    <img src="assets/asin_fix.jpg" alt="Kripik Pisang Asin">
                     <div class="product-badge">Terlaris</div>
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">Kripik Pisang Asin</h3>
                     <p class="product-description">Gurih asin yang bikin nagih.</p>
                     <div class="product-price">Rp 60.000/kg</div>
-                    <a href="https://wa.me/6283107772136?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Kripik Pisang Asin%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
+                    <a href="https://wa.me/62895378213230?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Kripik Pisang Asin%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
                         <i class="fab fa-whatsapp"></i>
                         Pesan Sekarang
                     </a>
@@ -779,14 +779,14 @@
 
             <div class="product-card animate-on-scroll">
                 <div class="product-image">
-                    <img src="assets/kripik-cokelat.jpg" alt="Kripik Pisang Cokelat">
+                    <img src="assets/coklat.jpg" alt="Kripik Pisang Cokelat">
                     <div class="product-badge">Premium</div>
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">Kripik Pisang Cokelat</h3>
                     <p class="product-description">Kripik pisang dibalut coklat.</p>
                     <div class="product-price">Rp 60.000/kg</div>
-                    <a href="https://wa.me/6283107772136?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Kripik Pisang Cokelat%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
+                    <a href="https://wa.me/62895378213230?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Kripik Pisang Cokelat%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
                         <i class="fab fa-whatsapp"></i>
                         Pesan Sekarang
                     </a>
@@ -795,13 +795,13 @@
 
             <div class="product-card animate-on-scroll">
                 <div class="product-image">
-                    <img src="assets/kripik-balado.jpg" alt="Kripik Pisang Balado">
+                    <img src="assets/balado.jpg" alt="Kripik Pisang Balado">
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">Kripik Pisang Balado</h3>
                     <p class="product-description">Bumbu baladonya bikin beda.</p>
                     <div class="product-price">Rp 60.000/kg</div>
-                    <a href="https://wa.me/6283107772136?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Kripik Pisang Balado%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
+                    <a href="https://wa.me/62895378213230?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Kripik Pisang Balado%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
                         <i class="fab fa-whatsapp"></i>
                         Pesan Sekarang
                     </a>
@@ -816,7 +816,7 @@
                     <h3 class="product-name">Kripik Talas</h3>
                     <p class="product-description">Renyaaan talas pilihan.</p>
                     <div class="product-price">Rp 60.000/kg</div>
-                    <a href="https://wa.me/6283107772136?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Kripik Talas%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
+                    <a href="https://wa.me/62895378213230?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Kripik Talas%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
                         <i class="fab fa-whatsapp"></i>
                         Pesan Sekarang
                     </a>
@@ -831,7 +831,7 @@
                     <h3 class="product-name">Kripik Sukun</h3>
                     <p class="product-description">Nikmatnya sukun yang garing.</p>
                     <div class="product-price">Rp 60.000/kg</div>
-                    <a href="https://wa.me/6283107772136?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Kripik Sukun%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
+                    <a href="https://wa.me/62895378213230?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Kripik Sukun%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
                         <i class="fab fa-whatsapp"></i>
                         Pesan Sekarang
                     </a>
@@ -858,7 +858,7 @@
                 <div class="product-info">
                     <h3 class="product-name">Basreng</h3>
                     <p class="product-description">Baso goreng renyah pedas.</p>
-                    <a href="https://wa.me/6283107772136?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Basreng%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
+                    <a href="https://wa.me/62895378213230?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Basreng%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
                         <i class="fab fa-whatsapp"></i>
                         Pesan Sekarang
                     </a>
@@ -872,7 +872,7 @@
                 <div class="product-info">
                     <h3 class="product-name">Kripik Kaca</h3>
                     <p class="product-description">Tipis, garing, dan pedas.</p>
-                    <a href="https://wa.me/6283107772136?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Kripik Kaca%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
+                    <a href="https://wa.me/62895378213230?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Kripik Kaca%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
                         <i class="fab fa-whatsapp"></i>
                         Pesan Sekarang
                     </a>
@@ -886,7 +886,7 @@
                 <div class="product-info">
                     <h3 class="product-name">Krupuk Seblak</h3>
                     <p class="product-description">Krupuk pedas khas seblak.</p>
-                    <a href="https://wa.me/6283107772136?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Krupuk Seblak%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
+                    <a href="https://wa.me/62895378213230?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Krupuk Seblak%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
                         <i class="fab fa-whatsapp"></i>
                         Pesan Sekarang
                     </a>
@@ -900,7 +900,7 @@
                 <div class="product-info">
                     <h3 class="product-name">Sus Kering</h3>
                     <p class="product-description">Seblak instan siap makan.</p>
-                    <a href="https://wa.me/6283107772136?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Sus Kering%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
+                    <a href="https://wa.me/62895378213230?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Sus Kering%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
                         <i class="fab fa-whatsapp"></i>
                         Pesan Sekarang
                     </a>
@@ -914,7 +914,7 @@
                 <div class="product-info">
                     <h3 class="product-name">Makaroni Pedas</h3>
                     <p class="product-description">Makaroni kering bumbu pedas.</p>
-                    <a href="https://wa.me/6283107772136?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Makaroni Pedas%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
+                    <a href="https://wa.me/62895378213230?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Makaroni Pedas%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
                         <i class="fab fa-whatsapp"></i>
                         Pesan Sekarang
                     </a>
@@ -928,7 +928,7 @@
                 <div class="product-info">
                     <h3 class="product-name">Emping Jagung</h3>
                     <p class="product-description">Kripik Jagung renyah.</p>
-                    <a href="https://wa.me/6283107772136?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Emping Jagung%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
+                    <a href="https://wa.me/62895378213230?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Emping Jagung%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
                         <i class="fab fa-whatsapp"></i>
                         Pesan Sekarang
                     </a>
@@ -942,7 +942,7 @@
                 <div class="product-info">
                     <h3 class="product-name">Sus Coklat</h3>
                     <p class="product-description">Sus coklat lumer.</p>
-                    <a href="https://wa.me/6283107772136?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Sus Coklat%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
+                    <a href="https://wa.me/62895378213230?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Sus Coklat%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
                         <i class="fab fa-whatsapp"></i>
                         Pesan Sekarang
                     </a>
@@ -956,7 +956,7 @@
                 <div class="product-info">
                     <h3 class="product-name">Basreng Ori</h3>
                     <p class="product-description">Basreng renyah rasa tidak pedas.</p>
-                    <a href="https://wa.me/6283107772136?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Basreng Ori%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
+                    <a href="https://wa.me/62895378213230?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Basreng Ori%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
                         <i class="fab fa-whatsapp"></i>
                         Pesan Sekarang
                     </a>
@@ -970,7 +970,7 @@
                 <div class="product-info">
                     <h3 class="product-name">Potato Panjang</h3>
                     <p class="product-description">Potato panjang gurih.</p>
-                    <a href="https://wa.me/6283107772136?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Potato Panjang%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
+                    <a href="https://wa.me/62895378213230?text=Saya ingin memesan%0A%0ANama:%0AAlamat:%0ANama Produk: Potato Panjang%0AJumlah:%0AMetode (Ambil Sendiri / Antar oleh Penjual):" class="order-btn">
                         <i class="fab fa-whatsapp"></i>
                         Pesan Sekarang
                     </a>
@@ -992,7 +992,7 @@
                     <a href="#" class="social-link">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://wa.me/6283107772136" class="social-link">
+                    <a href="https://wa.me/62895378213230" class="social-link">
                         <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>
@@ -1029,12 +1029,12 @@
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetSection = document.querySelector(targetId);
-                
+
                 // Remove active class from all links
                 document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
                 // Add active class to clicked link
                 this.classList.add('active');
-                
+
                 // Smooth scroll to target
                 targetSection.scrollIntoView({
                     behavior: 'smooth',
@@ -1066,18 +1066,18 @@
         window.addEventListener('scroll', function() {
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.nav-link');
-            
+
             let currentSection = '';
-            
+
             sections.forEach(section => {
                 const sectionTop = section.offsetTop - 120;
                 const sectionHeight = section.offsetHeight;
-                
+
                 if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
                     currentSection = section.getAttribute('id');
                 }
             });
-            
+
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === '#' + currentSection) {
@@ -1089,7 +1089,7 @@
         // Mobile menu toggle
         const mobileToggle = document.querySelector('.mobile-menu-toggle');
         const navMenu = document.querySelector('.nav-menu');
-        
+
         mobileToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
             const icon = this.querySelector('i');
@@ -1103,7 +1103,7 @@
                 const originalContent = this.innerHTML;
                 this.innerHTML = '<div class="loading"></div> Menghubungkan...';
                 this.style.pointerEvents = 'none';
-                
+
                 setTimeout(() => {
                     this.innerHTML = originalContent;
                     this.style.pointerEvents = 'auto';
