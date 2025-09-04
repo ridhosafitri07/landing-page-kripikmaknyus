@@ -703,9 +703,9 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="hero-image">
+                <!--<div class="hero-image">-->
                     <img src="assets/depan.png">
-                </div>
+                <!--</div>-->
             </div>
         </div>
         <div class="floating-element">
